@@ -116,7 +116,7 @@ ui <- fluidPage(
   ),
   
   hr(),
-  # future update ??
+  # future update ?? a delete option for each entry
   # from https://community.rstudio.com/t/dt-remove-row/111741
   tags$head(
     tags$script(
@@ -217,9 +217,8 @@ server <- function(input, output, session) {
                      "topic", "system_prompt")
       data <- data[, col_order]
       
-      ###### GLOBAL VARIABLE 
-      
       #data$delete <- "<a onclick='deleteRow(this);'>delete</a>"
+      ###### GLOBAL VARIABLE 
       data_global <<- data
       
         DT::datatable(data, rownames = FALSE, selection = "none",
@@ -302,8 +301,9 @@ server <- function(input, output, session) {
         paste('dataset-', format(Sys.time(), "%d-%b-%Y_%Hh-%Mmin"), '.json', sep='')
        },
        content = function(con) {
-        if(!exists("data_global")) return()
-         else  #write.csv(data_global, row.names = F)
+        if(!exists("data_global") | nrow(data_global)==0) 
+          showNotification("Dataset is Empty !", type = "error")
+         else  
             {   # GLOBAL VARIABLE
                 json = data_global
                 json$id = uuid::UUIDgenerate(n = nrow(json))
