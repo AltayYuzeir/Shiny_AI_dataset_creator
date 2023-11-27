@@ -29,6 +29,28 @@ function(cell) {
 
 ui <- fluidPage(
   style = "background:#404040;color:white;",
+  conditionalPanel(condition = "$('html').hasClass('shiny-busy')",
+                   tags$div("Loading...", id = "loadmessage")),
+  tags$head(
+    tags$style(
+      type = "text/css",
+      "
+             #loadmessage {
+               position: fixed;
+               top: 0px;
+               left: 0px;
+               width: 100%;
+               padding: 5px 0px 5px 0px;
+               text-align: center;
+               font-weight: bold;
+               font-size: 100%;
+               color: #000000;
+               background-color: #669900;
+               z-index: 105;
+             }
+          "
+    )
+  ),
   br(),
   fluidRow(
   column(width = 4, offset = 1,
@@ -90,8 +112,8 @@ ui <- fluidPage(
   textAreaInput("gptInput", "GPT response:",  height = "150px",
                 width = "100%", resize = "vertical"))
   ),
-  tags$head(tags$style("#humanInput {background:#a6a6a6;color:black;font-size:15px}")),
-  tags$head(tags$style("#gptInput {background:#a6a6a6;color:black;font-size:15px}")),
+  tags$head(tags$style("#humanInput {background:white;color:black;font-size:15px}")),
+  tags$head(tags$style("#gptInput {background:white;color:black;font-size:15px}")),
   br(),
   fluidRow(
   column(width = 3, offset = 1,
