@@ -95,7 +95,7 @@ ui <- fluidPage(
   br(),
   fluidRow(
   column(width = 3, offset = 1,
-         textInput("sourceInput", "Source input:")),
+         textInput("sourceInput", "Source:")),
   column(width = 3, offset = 0,
          textInput("topicInput", "Topic:")),
   column(width = 3, offset = 0,
