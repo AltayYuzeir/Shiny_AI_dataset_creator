@@ -30,7 +30,8 @@ function(cell) {
 ui <- fluidPage(
   style = "background:#404040;color:white;",
   conditionalPanel(condition = "$('html').hasClass('shiny-busy')",
-                   tags$div("Loading...", id = "loadmessage")),
+                   tags$div("Processing... Please wait...", id = "loadmessage")),
+  #tags$div("Processing... Please wait...", id = "loadmessage"),
   tags$head(
     tags$style(
       type = "text/css",
@@ -43,9 +44,9 @@ ui <- fluidPage(
                padding: 5px 0px 5px 0px;
                text-align: center;
                font-weight: bold;
-               font-size: 100%;
-               color: #000000;
-               background-color: #669900;
+               font-size: 15px;
+               color: #ffffff;
+               background-color: #669999;
                z-index: 105;
              }
           "
