@@ -2,6 +2,22 @@
 Easy interaction with JSON files and conversion between JSON, CSV and XLSX with few clicks.\
 Perfect for creating JSON files for fine-tuning large language modals.
 
+#### JSON structure:
+- id: a randomly generated uuid
+- conversations: single turn human & gpt turns in ShareGPT format
+- source: source of the conversation, for metadata purposes when merging with others
+- topic: the sub-topic for the domain
+- system_prompt: type of system prompt used for generating the response.
+
+#### CSV and XLSX structure:
+- human: prompt from the conversations
+- gpt: response from the conversations
+- source: source of the conversation, for metadata purposes when merging with others
+- topic: the sub-topic for the domain
+- system_prompt: type of system prompt used for generating the response.
+
+
+
 <img src="assets/shiny_app_view-1.png" align="center" width=100% height=400 alt="" />
 <img src="assets/shiny_app_view-2.png" align="center" width=100% height=400 alt="" />
 
